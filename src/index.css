@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Animation for the checkmark */
+@keyframes checkmark {
+  0% {
+    stroke-dasharray: 0, 75px;
+  }
+  100% {
+    stroke-dasharray: 75px, 75px;
+  }
+}
+
+/* Keyframes for the delete button animation */
+@keyframes delete {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Add the checkmark animation */
+.animate-checkmark .checkmark {
+  animation: checkmark 0.35s ease-in-out forwards;
+}
+
+/* Add ping animation for delete button */
+.animate-ping {
+  animation: delete 0.5s ease-out forwards;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
