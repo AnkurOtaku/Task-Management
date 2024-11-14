@@ -60,7 +60,7 @@ function App() {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-radial from-white/10 via-white/0 to-transparent opacity-40 pointer-events-none"></div>
 
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-sky-950 bg-clip-text text-transparent w-fit">
+        <h1 className="text-3xl font-bold mb-4 bg-blue-900 bg-clip-text text-transparent w-fit">
           Task Manager
         </h1>
         <div className="flex place-content-between">

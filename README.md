@@ -1,71 +1,43 @@
-# Getting Started with Create React App
+# Task Manager Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a **Task Manager Application** built with React, JavaScript, and Tailwind CSS. It helps users manage tasks efficiently by allowing them to add, delete, and mark tasks as complete. Users can also prioritize and sort tasks, and utilize a search feature to locate specific tasks. Each task is stored in local storage, ensuring persistence after page reloads.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Task Input**: Add tasks with a title and priority level.
+- **Task Deletion**: Delete tasks using a delete button.
+- **Task Completion**: Mark tasks as completed, showing a checkmark animation.
+- **Task Persistence**: Tasks are saved in local storage to remain after page reloads.
+- **Task Search**: Filter tasks by keywords to quickly locate specific items.
+- **Priority Setting & Sorting**: Assign priority levels to tasks and sort them by priority.
+- **Glassmorphic UI with Sun Ray Effect**: The UI includes a glassmorphic effect and an oceanic background with sun rays for a visually appealing interface.
 
-### `npm start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Task Manager - Main View](./screenshots/task-manager-main.png)
+![Task Manager - Completed Task](./screenshots/task-manager-completed.png)
+![Task Manager - Search Feature](./screenshots/task-manager-search.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup and Launch Process
 
-### `npm test`
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/AnkurOtaku/Task-Management
+   cd task-manager
+2. **Install Dependencies**
+   ```bash
+   npm install
+2. **Run the Application**
+   ```bash
+   npm run start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**The application will start on http://localhost:3000. Open this URL in your browser to use the Task Manager.**
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Assumptions Made During Development
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# Task-Management" 
+1. **Task Priority**: Priority levels are predefined (e.g., low, medium, high) and are indicated by a color-coded badge for easy identification.
+2. **Task Storage**: Tasks are stored in the browser's local storage to maintain persistence. This version does not include a backend server for task storage.
+3. **Completion Marking Animation**: A checkmark SVG animation appears when a task is marked as complete to enhance the user experience.
+4. **Screen Responsiveness**: Tailwind CSS is used for responsive design, though very small screens may require additional optimization.
+5. **Browser Compatibility**: The application is optimized for modern browsers and may experience compatibility issues on older versions of Internet Explorer or other non-standard browsers.

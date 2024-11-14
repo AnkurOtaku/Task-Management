@@ -44,7 +44,7 @@ function TaskItem({ task, deleteTask, toggleTaskCompletion }) {
       )}
 
       {/* Priority and Task Content */}
-      <div className="flex-1">
+      <div className="flex-1 cursor-pointer" onClick={handleMarkComplete}>
         {/* Priority Tag */}
         <span
           className={`block text-xs font-semibold px-2 py-1 rounded capitalize w-fit ${getPriorityColor(
@@ -56,8 +56,7 @@ function TaskItem({ task, deleteTask, toggleTaskCompletion }) {
 
         {/* Task Title */}
         <span
-          onClick={handleMarkComplete}
-          className={`block cursor-pointer break-words mt-1 ${
+          className={`block break-words mt-1 ${
             completed ? "line-through text-gray-500" : ""
           }`}
         >
