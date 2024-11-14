@@ -55,37 +55,44 @@ function App() {
     });
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Task Manager</h1>
-      <div className="flex place-content-between">
-      {/* Search Bar */}
-      <input
-        type="text"
-        placeholder="Search tasks..."
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className="mb-4 w-3/4 p-2 border border-gray-300 rounded"
-      />
+    <div className="min-h-screen bg-gradient-to-b from-sky-500 to-blue-900 relative overflow-hidden flex items-start justify-center">
+      {/* Sun Rays Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-radial from-white/10 via-white/0 to-transparent opacity-40 pointer-events-none"></div>
 
-      {/* Sort Options */}
-      <select
-        value={sortOrder}
-        onChange={handleSortChange}
-        className="mb-4 w-1/5 p-2 border border-gray-300 rounded"
-      >
-        <option value="none">Sort by Priority</option>
-        <option value="high">High Priority</option>
-        <option value="medium">Medium Priority</option>
-        <option value="low">Low Priority</option>
-      </select>
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-sky-950 bg-clip-text text-transparent w-fit">
+          Task Manager
+        </h1>
+        <div className="flex place-content-between">
+          {/* Search Bar */}
+          <input
+            type="text"
+            placeholder="Search tasks..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="mb-4 w-3/4 p-2 border border-gray-300 rounded"
+          />
+
+          {/* Sort Options */}
+          <select
+            value={sortOrder}
+            onChange={handleSortChange}
+            className="mb-4 w-1/5 p-2 border border-gray-300 rounded"
+          >
+            <option value="none">Sort by Priority</option>
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+        </div>
+
+        <TaskInput addTask={addTask} />
+        <TaskList
+          tasks={filteredTasks}
+          deleteTask={deleteTask}
+          toggleTaskCompletion={toggleTaskCompletion}
+        />
       </div>
-
-      <TaskInput addTask={addTask} />
-      <TaskList
-        tasks={filteredTasks}
-        deleteTask={deleteTask}
-        toggleTaskCompletion={toggleTaskCompletion}
-      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function TaskItem({ task, deleteTask, toggleTaskCompletion }) {
   const [completed, setCompleted] = useState(task.completed);
@@ -15,10 +15,10 @@ function TaskItem({ task, deleteTask, toggleTaskCompletion }) {
   };
 
   return (
-    <li className="flex justify-between items-center bg-gray-100 p-2 rounded shadow-sm relative">
+    <li className="glass-card w-full rounded-lg shadow-lg text-white p-2 flex items-center relative">
       {/* Checkmark Animation when Completed */}
       {completed && (
-        <div className="absolute inset-y-0 left-0 flex justify-center items-center">
+        <div className="flex-shrink-0 mr-2">
           <svg
             className="w-10 h-10 animate-checkmark"
             xmlns="http://www.w3.org/2000/svg"
@@ -42,23 +42,35 @@ function TaskItem({ task, deleteTask, toggleTaskCompletion }) {
           </svg>
         </div>
       )}
-      
-      {/* Task Title */}
-      <span
-        onClick={handleMarkComplete}
-        className={`ml-12 flex-1 cursor-pointer break-words ${completed ? 'line-through text-gray-500' : ''}`}
-      >
-        <span className={`px-2 py-1 rounded text-sm capitalize ${getPriorityColor(task.priority)}`}>
+
+      {/* Priority and Task Content */}
+      <div className="flex-1">
+        {/* Priority Tag */}
+        <span
+          className={`block text-xs font-semibold px-2 py-1 rounded capitalize w-fit ${getPriorityColor(
+            task.priority
+          )}`}
+        >
           {task.priority}
         </span>
-        <br/>
-        {task.title} 
-      </span>
+
+        {/* Task Title */}
+        <span
+          onClick={handleMarkComplete}
+          className={`block cursor-pointer break-words mt-1 ${
+            completed ? "line-through text-gray-500" : ""
+          }`}
+        >
+          {task.title}
+        </span>
+      </div>
 
       {/* Delete Button with Animation */}
       <button
         onClick={handleDelete}
-        className={`text-red-500 ml-4 hover:text-red-700 ${deleting ? 'animate-ping' : ''}`}
+        className={`text-red-500 ml-4 hover:text-red-700 ${
+          deleting ? "animate-ping" : ""
+        } align-middle`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +87,6 @@ function TaskItem({ task, deleteTask, toggleTaskCompletion }) {
           />
         </svg>
       </button>
-
     </li>
   );
 }
@@ -83,14 +94,14 @@ function TaskItem({ task, deleteTask, toggleTaskCompletion }) {
 // Helper function to get priority color
 function getPriorityColor(priority) {
   switch (priority) {
-    case 'high':
-      return 'bg-red-200 text-red-800';
-    case 'medium':
-      return 'bg-yellow-200 text-yellow-800';
-    case 'low':
-      return 'bg-green-200 text-green-800';
+    case "high":
+      return "bg-red-200 text-red-800";
+    case "medium":
+      return "bg-yellow-200 text-yellow-800";
+    case "low":
+      return "bg-green-200 text-green-800";
     default:
-      return '';
+      return "";
   }
 }
 
