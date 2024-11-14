@@ -3,7 +3,7 @@ import TaskItem from './TaskItem';
 
 function TaskList({ tasks, deleteTask, toggleTaskCompletion }) {
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-2 transition-all duration-500 ease-in-out">
       {tasks.map((task) => (
         <TaskItem
           key={task.id}

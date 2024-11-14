@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import TaskInput from './components/TaskInput';
-import TaskList from './components/TaskList';
+import React, { useState, useEffect } from "react";
+import TaskInput from "./components/TaskInput";
+import TaskList from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState("none");
 
-  // Load tasks from localStorage when the app loads
+  // Load tasks from localStorage
   useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(savedTasks);
   }, []);
 
-  // Save tasks to localStorage when they change
+  // Save tasks to localStorage
   useEffect(() => {
-    // We only save tasks when the list is updated
     if (tasks.length > 0) {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+      localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   }, [tasks]);
 
@@ -27,23 +28,62 @@ function App() {
 
   // Delete a task by id
   const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   // Toggle the task completion status
   const toggleTaskCompletion = (id) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, completed: !task.completed } : task
-    ));
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
+
+  const handleSearchChange = (e) => setSearchQuery(e.target.value);
+  const handleSortChange = (e) => setSortOrder(e.target.value);
+
+  const filteredTasks = tasks
+    .filter((task) =>
+      task.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOrder === "high") return a.priority === "high" ? -1 : 1;
+      if (sortOrder === "medium") return a.priority === "medium" ? -1 : 1;
+      if (sortOrder === "low") return a.priority === "low" ? -1 : 1;
+      return 0;
+    });
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Task Manager</h1>
+      <div className="flex place-content-between">
+      {/* Search Bar */}
+      <input
+        type="text"
+        placeholder="Search tasks..."
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className="mb-4 w-3/4 p-2 border border-gray-300 rounded"
+      />
+
+      {/* Sort Options */}
+      <select
+        value={sortOrder}
+        onChange={handleSortChange}
+        className="mb-4 w-1/5 p-2 border border-gray-300 rounded"
+      >
+        <option value="none">Sort by Priority</option>
+        <option value="high">High Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="low">Low Priority</option>
+      </select>
+      </div>
+
       <TaskInput addTask={addTask} />
-      <TaskList 
-        tasks={tasks} 
-        deleteTask={deleteTask} 
+      <TaskList
+        tasks={filteredTasks}
+        deleteTask={deleteTask}
         toggleTaskCompletion={toggleTaskCompletion}
       />
     </div>
